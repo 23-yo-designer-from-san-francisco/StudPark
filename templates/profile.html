@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Studpark</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+{% include "includes/header.html" %}
+<!-- Begin page content -->
+<main>
+    <div class="container">
+        <div class="row">
+            <h1>Профиль пользователя {{ user }}</h1>
+        </div>
+        <br>
+        {% for info in information %}
+        <div class="row">
+            <div class="col-3">
+                <p style="font-size: 20px;">{{ info.label }}</p>
+            </div>
+            <div class="col-6">
+                <p style="font-size: 20px;">{{ info.data }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+</body>
+</html>

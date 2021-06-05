@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Studpark</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+{% include "includes/header.html" %}
+<main>
+    <div class="container">
+        <div class="row">
+            <h1>Настройки</h1>
+        </div>
+        <br>
+        <div class="row">
+            <form class="form-horizontal" action="" method="post">
+                <br>
+                <!-- День рождения -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="birthday" class="col-form-label" style="font-size: 20px;">
+                            &bull;Дата рождения
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" id="birthday" name="birthday" class="form-control" placeholder="{{ birthday }}" style="width: 300px;">
+                    </div>
+                </div>
+                <br>
+                <br>
+                <!-- Контакты -->
+                {% for contact in contacts %}
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="{{ contact.id }}" class="col-form-label" style="font-size: 20px;">
+                            &bull;{{ contact.label }}
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" id="{{ contact.id }}" name="{{ contact.id }}" class="form-control" placeholder="{{ contact.data }}" style="width: 300px;">
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- Получение рассылок -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label style="font-size: 20px;">&bull;Хочу получать рассылку на почту
+                            <input type="checkbox" name="notification" {% if notification %} checked {% endif %} style="margin-left: 20px;"/>
+                        </label>
+                    </div>
+                </div><br>
+                <button type="submit" class="btn btn-secondary" style="width: 150px;">Сохранить</button><br>
+                <br>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

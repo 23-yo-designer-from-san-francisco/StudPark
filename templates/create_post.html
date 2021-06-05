@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Studpark - Создать пост</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+</head>
+<body>
+{% include "includes/header.html" %}
+<main>
+    <div class="container">
+        <div class="row">
+            <h1 style="color: black;">Создать пост</h1>
+        </div>
+        <br>
+        <div class="row">
+            <form class="form-horizontal" action="/PostAPI/Create" method="post">
+                <!-- Заголовок поста -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="header" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Заголовок
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'" minlength="1" id="header" name="header" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Текст поста -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="body" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Тело поста
+                        </label>
+                    </div>
+                    <div class="col">
+                        <textarea name="body"  required="'required'" minlength="1" id="body" class="form-control" style="width: 300px;"></textarea>
+                    </div>
+                </div>
+                <!-- Загрузка файла -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="fileupload" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Прикрепить файл(ы)
+                        </label>
+                    </div>
+
+                    <div class="col">
+                        <input type="file" name="fileupload" id="fileupload" class="form-control" style="width: 300px;"></input>
+                    </div>
+                    <button type="button" id="btn-upload" class="btn btn-info" onclick="uploadFile()">Прикрепить</button>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-secondary" style="width: 250px;">
+                    Запостить
+                </button>
+                <br>
+            </form>
+        </div>
+    </div>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.919.0.js"></script>
+    <script src="/js/credentials.js"></script>
+    <script src="/js/upload.js"></script>
+</main>
+</body>
+</html>

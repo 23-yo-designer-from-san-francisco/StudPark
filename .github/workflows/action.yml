@@ -1,0 +1,57 @@
+name: Installing project"
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    
+    env:
+      CPPLINT_FILTERS: --filter=-readability/casting,-legal/copyright,-build/include_subdir,-whitespace/line_length,-runtime/references,-runtime/explicit,-build/include_order,-build/c++11,-build/namespaces,-runtime/printf
+      CPPLINT_FILES: --recursive src/ include/ main.c
+      CODECOV_TOKEN: 51df8732-1880-4209-b481-d9fe2e5ea92c
+      HOST: 192.168.193.151
+      PORT: 5432
+      PASSWORD: root
+      DBNAME: studpark
+      DBUSER: root
+      HOST_SERV: 127.0.0.1
+      PORT_SERV: 5000
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Update & install packages
+        run: |
+         sudo apt update && sudo apt upgrade -y && sudo apt install -y gcc-10 cmake g++-10 build-essential cppcheck python3 python3-pip libpthread-stubs0-dev
+         python3 -m pip install cpplint && pip3 install --user cpplint
+      
+      - name: Run cpplint
+        run: cpplint $CPPLINT_FILTERS $CPPLINT_FILES
+
+      - name: Run cppcheck
+        run: cppcheck .
+
+      - name: Install postgresql
+        run: sudo apt install libpq-dev postgresql-server-dev-12 && sudo apt install postgresql postgresql-contrib && sudo systemctl start postgresql@12-main && sudo pg_ctlcluster 12 main start && sudo apt-get install libpq-dev
+
+      - name: Install Boost
+        run: sudo apt-get install -f libboost-all-dev
+
+      - name: Install Inja
+        run: wget https://github.com/pantor/inja/archive/refs/tags/v3.2.0.tar.gz && tar -xvzf v3.2.0.tar.gz && cd inja-3.2.0/test/ && rm test.cpp && echo "int main() { return 0; }" >> test.cpp && rm benchmark.cpp && echo "int main() { return 0; }" >> benchmark.cpp && cd .. && cmake . && make && sudo make install && cd ..
+
+      - name: Install nlohmann/json
+        run: wget https://github.com/nlohmann/json/archive/refs/tags/v3.9.1.tar.gz && tar -xvzf v3.9.1.tar.gz && cd json-3.9.1 && cmake . && make && sudo make install && cd ..
+
+      - name: Install curl
+        run: sudo apt install curl && sudo apt-get install libcurl4-openssl-dev
+
+      - name: Cmake start
+        run: cmake .
+
+      - name: Make studpark
+        run: sudo make studpark
+
+      - name: Run Codecov
+        run: bash <(curl -s https://codecov.io/bash)

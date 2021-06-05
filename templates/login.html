@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Studpark</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+</head>
+<body>user
+{% include "includes/header.html" %}
+<main>
+    <div class="container">
+        <div class="row">
+            <h1 style="color: black;">Вход</h1>
+        </div>
+        <br>
+        <div class="row">
+            <form class="form-horizontal" action="/UserAPI/Authenticate" method="post">
+                <!-- Логин -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="login" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Логин
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'" id="login" name="login" minlength="6" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Пароль -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="password" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Пароль
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="password" required="'required'" name="password" id="password" class="form-control" minlength="8" style="width: 300px;">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary" style="width: 250px;">
+                    Войти
+                </button>
+                <br>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

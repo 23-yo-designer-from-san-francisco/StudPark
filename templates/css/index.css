@@ -1,0 +1,52 @@
+body {
+	font-family: 'Oswald', sans-serif;
+}
+
+.navbar img {
+	object-fit: cover;
+    width: 100px;
+    height: 100px;
+}
+
+main .
+
+.navbar .col-3 button {
+	width: 130px;
+}
+
+
+main > .container {
+	padding: 200px 15px 0;
+}
+
+.pagination {
+	margin-top: 10px;
+}
+
+div.container hr {
+	border-top: 2px solid rgba(0,0,0,.1);
+}
+
+.Best-Members-Text {
+	font-size: 20px;
+}
+
+.Question-Text {
+	padding-right: 10px;
+	font-size: 19px;
+}
+
+.Question-Avatar {
+	margin: 0 auto;
+	width: 100px;
+    height: 100px;
+}
+
+.One-Question-Avatar {
+	width: 150px;
+	height: 100px;
+}
+
+.Button-Like {
+	margin-left: 15px;
+}

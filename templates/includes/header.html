@@ -1,0 +1,30 @@
+<header>
+    <nav class="navbar navbar-dark fixed-top bg-dark">
+        <div class="col-6">
+            <div class="container-fluid justify-content-start">
+                <div class="col">
+                    <a class="navbar-brand" href="/">
+                        <h1 style="color: white;">
+                            Studpark&nbsp;&nbsp;&nbsp;<i style="font-size: 15px;">Developed by students for students</i>
+                        </h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col">
+                    {% if isAuthenticated %}
+                        {% if role == 2 %}
+                            {% include "superuserButtonsList.html" %}
+                        {% else %}
+                            {% include "userButtonsList.html" %}
+                        {% endif %}
+                    {% else %}
+                        {% include "anonymousButtonsList.html" %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

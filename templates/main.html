@@ -1,0 +1,110 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Studpark</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="/css/index.css" rel="stylesheet">
+</head>
+
+<body>
+{% include "includes/header.html" %}
+<!-- Begin page content -->
+<main>
+    <div class="container">
+        {% include "includes/calendar.html" %}
+        <br>
+        <div class="row">
+            <!-- Left column with questions -->
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <h1 style="color: black;">Последние посты</h1>
+                    </div>
+                </div>
+                {% if role >= 1 %}
+                <div class="row">
+                    <div class="col">
+
+                        <a href="/PostAPI/Create">
+                            <button type="submit" class="btn btn-secondary" style="width: 200px; font-size: 15px;">
+                                Добавить пост
+                            </button>
+                        </a>
+                        <a href="/GroupAPI/List">
+                            <button type="submit" class="btn btn-secondary" style="width: 200px; font-size: 15px;">
+                                Список группы
+                            </button>
+                        </a>
+                        <a href="/GroupAPI/AddSubject">
+                            <button type="submit" class="btn btn-secondary" style="width: 200px; font-size: 15px;">
+                                Добавить предмет
+                            </button>
+                        </a>
+                        <a href="/GroupAPI/SubjectList">
+                            <button type="submit" class="btn btn-secondary" style="width: 200px; font-size: 15px;">
+                                Список предметов
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+                <br>
+                <!--One question -->
+                {% if posts %}
+                {% for post in posts %}
+                <div class="row">
+                    <div class="col">
+                        <div class="p-3 border bg-light">
+                            {% if role >= 1 %}
+                            <button type="button" onclick="delete_post(this)" data-pid="{{ post.id }}" class="btn btn-danger" style="width: 50px; height: 40px; float: right;">
+                                &#10008;
+                            </button>
+                            {% endif %}
+                            <div class="row">
+                                <div class="col">
+                                    <div class="container-fluid justify-content-center">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h3 style="color: navy;">{{ post.title }}</h3>
+                                            </div>
+                                        </div>
+                                        <div class="Question-Text">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p style="color: black;">
+                                                        {{ post.text }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="text-right">
+                                                        <small style="color: black;"><i>{{ post.author }} | {{ post.datetime }}</i></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/main.js"></script>
+<script src="js/post.js"></script>
+</body>
+</html>
