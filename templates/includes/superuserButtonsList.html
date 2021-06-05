@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-3">
+        <p style="font-size: 20px; color: white; margin-top: 15px;">
+            <a href="/profile" style="color: white;">
+                {{ user }}
+            </a>
+        </p>
+        <p style="font-size: 20px; color: white;">
+            <a href="#" style="color: white;">
+                {{ group }}
+            </a>
+        </p>
+    </div>
+    <div class="col-3" style="margin-top: 10px;">
+        <a href="/GroupAPI/Create">
+            <button type="button" class="btn btn-light" style="width: 150px; font-size: 20px;">
+                Создать группу
+            </button>
+        </a>
+    </div>
+    <div class="col-3" style="margin-top: 10px;">
+        <a href="/settings">
+            <button type="button" class="btn btn-light" style="width: 150px; font-size: 20px;">
+                Настройки
+            </button>
+        </a>
+    </div>
+    <div class="col-3" style="margin-top: 10px;">
+        <a href="/logout">
+            <button type="button" onclick="document.cookie ='session= ; expires = Thu, 01 Jan 1970 00:00:00 GMT'"
+                    class="btn btn-light" style="width: 150px; font-size: 20px;">
+                Выход
+            </button>
+        </a>
+    </div>
+</div>

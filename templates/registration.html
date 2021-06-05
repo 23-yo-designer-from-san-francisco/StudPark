@@ -1,0 +1,119 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Studpark</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+</head>
+<body>
+{% include "includes/header.html" %}
+<main>
+    <div class="container">
+        <div class="row">
+            <h1 style="color: black;">Регистрация</h1>
+        </div>
+        <br>
+        <div class="row">
+            <form class="form-horizontal" action="#" method="post">
+                <!-- Фамилия -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="s_name" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Фамилия
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'" pattern=".{1,}" id="s_name" name="s_name" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Имя -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="f_name" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Имя
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'" pattern=".{1,}" name="f_name" id="f_name" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Отчество -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="user_patronymic" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Отчетство
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'" pattern=".{1,}" name="user_patronymic" id="user_patronymic" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- День рождения -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="birthday" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;День рождения<small>(31-12-1945)</small>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'" pattern="[0-3]{2}-[0-1][0-9]-[\d]{4}" name="birthday" id="birthday" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Почта -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="user_login" class="col-form-label"  minlength="6" style="font-size: 20px; color: black;">
+                            &bull;Почта
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'" pattern=".{3,}" id="user_login" name="user_login" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Пароль -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="password" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Пароль
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="password" required="'required'" id="password" minlength="8" name="password" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Подтверждение пароля -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="password_confirm" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Подтверждение пароля
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="password" required="'required'" id="password_confirm"  minlength="8" name="password_confirm" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Код группы -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="join_code" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Код группы
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="password" required="'required'" pattern=".{8}" name="join_code" id="join_code" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary" style="width: 250px;">
+                    Зарегистироваться
+                </button>
+                <br>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Studpark</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+{% include "includes/header.html" %}
+<!-- Begin page content -->
+<main>
+    <div class="container">
+        <div class="row">
+            <h1>Предметы группы группы {{ group_name }}</h1>
+        </div>
+        <br>
+            <a href="/GroupAPI/AddSubject">
+                <button type="submit" class="btn btn-secondary" style="width: 250px;">
+                    Добавить предмет
+                </button>
+            </a>
+            <br><br>
+            <ol class="list-group list-group-horizontal-sm">
+                <li class="list-group-item" style="width: 20px;">№</li>
+                <li class="list-group-item" style="width: 300px;">Предмет</li>
+            </ol>
+            {% for subject in subjects %}
+            <ol class="list-group list-group-horizontal-sm">
+                <li class="list-group-item" style="width: 20px;">{{ subject.index }}</li>
+                <li class="list-group-item" style="width: 300px;">{{ subject.name }}</li>
+                <button type="submit" id="{{ subject.index }}" data-sid="{{subject.id}}" class="btn btn-danger" onclick="del_subject(this)"style="width: 150px; height: 40px; margin-left: 20px; margin-top: 5px;">
+                    Удалить
+                </button>
+            </ol>
+            {% endfor %}
+        <br>
+    </div>
+</main>
+<script type="text/javascript" src="/js/del_subject.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Studpark</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+{% include "includes/header.html" %}
+<!-- Begin page content -->
+<main>
+    <div class="container">
+        <div class="row">
+            <h1 id="title">Список группы {{ group_name }}</h1>
+        </div>
+        <br>
+        <ol class="list-group list-group-horizontal-sm">
+            <li class="list-group-item" style="width: 20px;">№</li>
+            <li class="list-group-item" style="width: 300px;">ФИО</li>
+            <li class="list-group-item" style="width: 150px;">Номер телефона</li>
+            <li class="list-group-item" style="width: 250px;">Почта</li>
+        </ol>
+        {% for student in students %}
+        <ol class="list-group list-group-horizontal-sm">
+            <li class="list-group-item" style="width: 20px;">{{ student.index }}</li>
+            <li class="list-group-item" style="width: 300px;">{{ student.FIO }}</li>
+            <li class="list-group-item" style="width: 150px;">{{ student.phone }}</li>
+            <li class="list-group-item" style="width: 250px;">{{ student.email }}</li>
+        </ol>
+        {% endfor %}
+        <br>
+        <form class="form-horizontal" action="#" method="post">
+            <button type="button" onclick="download()" class="btn btn-secondary" style="width: 250px;">
+                Экспортировать как csv
+            </button>
+        </form>
+        <br>
+    </div>
+
+</main>
+<script src="/js/export.js"></script>
+</body>
+</html>

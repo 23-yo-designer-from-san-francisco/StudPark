@@ -1,0 +1,145 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Studpark</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="/css/index.css" rel="stylesheet">
+</head>
+
+<body>
+{% include "includes/header.html" %}
+<main>
+    <div class="container">
+        <div class="row">
+            <h1 style="color: black;">Панель администратора</h1>
+        </div>
+        <br>
+        <div class="row">
+            <form class="form-horizontal" action="/GroupAPI/Create" method="post">
+                <!-- Факультет -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="user_faculty" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Факультет<small>(Пример: РК)</small>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'" pattern=".{1,}" name="user_faculty" id="user_faculty" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Кафедра -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="user_number_department" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Кафедра<small>(Пример: 6)</small>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'"  pattern=".{1,}" name="user_number_department" id="user_number_department" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Группа -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="group" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Группа<small>(Пример: 62)</small>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'"  pattern=".{2,}" id="group" name="group" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Буква -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="education_level" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Уровень образования
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="radio" id="bac" name="education_level" value="B">
+                        <label for="bac" style="color: black;">Б</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" id="mag" name="education_level" value="M">
+                        <label for="mag" style="color: black;">М</label>
+                    </div>
+                </div>
+                <!-- Фамилия старосты -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="head_s_name" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Фамилия старосты
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'" pattern=".{2,}" name="head_s_name" id="head_s_name" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Имя старосты -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="head_f_name" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Имя старосты
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'"  pattern=".{2,}" name="head_f_name" id="head_f_name" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Отчество старосты -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="head_patronymic" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Отчество старосты
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'"  pattern=".{2,}" name="head_patronymic" id="head_patronymic" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- Год начала обучения -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="start"  class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;Год начала обучения<small>(Пример: 2018)</small>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'"  name="start" id="start" class="form-control" pattern="[\d]{4}" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- e-mail старосты -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="head_user_login" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;E-mail старосты<small>(Пример: vitalyershov@gmail.com)</small>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'"  pattern=".{3,}" name="head_user_login" id="head_user_login" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <!-- ДР старосты -->
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <label for="head_birthday" class="col-form-label" style="font-size: 20px; color: black;">
+                            &bull;День рождения старосты<small>(Пример: 13-08-2000)</small>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input type="text" required="'required'"  pattern="[0-3]{2}-[0-1][0-9]-[\d]{4}" name="head_birthday" id="head_birthday" class="form-control" style="width: 300px;">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary" style="width: 250px;">
+                    Зарегистрировать старосту
+                </button><br>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>
